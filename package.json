@@ -1,0 +1,27 @@
+{
+  "name": "harvestcli",
+  "version": "0.1.0",
+  "description": "cli wrapper for interacting w the harvest api",
+  "main": "harvest.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmacnett/harvestcli.git"
+  },
+  "keywords": [
+    "harvest",
+    "timetracking"
+  ],
+  "author": "jesse macnett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmacnett/harvestcli/issues"
+  },
+  "homepage": "https://github.com/jmacnett/harvestcli#readme",
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "yargs": "^17.3.1"
+  }
+}
