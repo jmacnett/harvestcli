@@ -31,7 +31,7 @@ module.exports.isConfigured = () => {
     return false;
 }
 
-module.exports.configure = () => {
+module.exports.configure = async () => {
     let rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout

@@ -7,10 +7,9 @@ const cfg = require('./config');
 // we only use the v2 api thus far
 const host = 'api.harvestapp.com';
 
-function doRequest(endpoint, method, data, success) {
+async function doRequest(endpoint, method, data, success) {
     var dataString = JSON.stringify(data);
     if(!endpoint.toLowerCase().includes('/api/v2')) {
-        console.log('cows');
         endpoint = "/api/v2/" + endpoint;
     }
 
@@ -46,7 +45,7 @@ function doRequest(endpoint, method, data, success) {
         });
     
         res.on('end', function() {
-          console.log(responseString);
+          //console.log(responseString);
           var responseObject = JSON.parse(responseString);
           success(responseObject);
         });
@@ -56,11 +55,34 @@ function doRequest(endpoint, method, data, success) {
       req.end();
 }
 
-module.exports.getTimer = (args) => {
+module.exports.getTimer = async (args) => {
+    await doRequest('time_entries','GET',{
+        is_running: true
+    },(res)=>{
+
+        return res['total_entries'];
+        let tcnt = res['total_entries'];
+        if(tcnt > 0) {
+            console.log('No active timers.');
+            return;
+            //
+        }
+        console.log(`${tcnt} active timer${ tcnt == 1 ? '' : 's'}.`);
+
+    });
+}
+
+module.exports.startTimer = async (args) => {
     doRequest('time_entries','GET',{
         is_running: true
     },(res)=>{
-        console.log('success!');
-        console.log(res);
+        let tcnt = res['total_entries'];
+        if(tcnt > 0) {
+            console.log('No active timers.');
+            return;
+            //
+        }
+        console.log(`${tcnt} active timer${ tcnt == 1 ? '' : 's'}.`);
+
     })
 }

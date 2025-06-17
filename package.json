@@ -22,6 +22,6 @@
   "homepage": "https://github.com/jmacnett/harvestcli#readme",
   "dependencies": {
     "js-yaml": "^4.1.0",
-    "yargs": "^17.3.1"
+    "yargs": "^17.7.2"
   }
 }
